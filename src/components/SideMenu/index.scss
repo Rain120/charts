@@ -1,0 +1,38 @@
+.side-menu {
+  height: calc(100vh);
+  .logo {
+    color: #fff;
+    position: relative;
+    text-align: center;
+    height: 3rem;
+    line-height: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .title {
+      font-size: 1.5rem;
+      display: inline-block;
+    }
+  }
+  .r-content {
+    .ant-layout-header {
+      height: 52px;
+      line-height: 52px;
+      background: #ffffff;
+      padding: 0 .1rem!important;
+      .trigger {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+      }
+      .timer {
+        font-weight: bold;
+        font-size: 1.5rem;
+        float: right;
+        margin-right: 2rem;
+      }
+    }
+  }
+}
