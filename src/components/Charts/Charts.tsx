@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import XLSX from 'xlsx';
 import './index.scss';
-import { Upload, Icon, message, Button, Checkbox, Modal } from 'antd';
 import LineCharts from 'src/components/Recharts/LineCharts';
 import BarCharts from 'src/components/Recharts/BarCharts';
 import AreaCharts from 'src/components/Recharts/AreaCharts';
 import PieCharts from 'src/components/Recharts/PieCharts';
 import ComposedCharts from 'src/components/Recharts/ComposedCharts';
+import { Upload, Icon, message, Button, Checkbox, Modal, Table } from 'antd';
 
 const Dragger = Upload.Dragger;
 const CheckboxGroup = Checkbox.Group;
@@ -174,6 +174,18 @@ export default class Charts extends Component {
       },
     };
 
+    let columns = [] as any;
+    this.count.length > 0 && this.count.map((item, index) => {
+      let column = [] as any;
+      item.names.map((d, i) => {
+        column.push({
+          title: d.name,
+          dataIndex: d.dataKey,
+        })
+      })
+      columns.push(column)
+    })
+
     return (
       <div className="charts-drawer">
         <div className="upload-header">
@@ -201,9 +213,16 @@ export default class Charts extends Component {
           </Checkbox>
           <CheckboxGroup options={plainOptions} value={checkedLists} onChange={this.onChange} />
         </div>
-        <div>
+        <div className="table-lists">
           {
-            this.count && checkedLists && checkedLists.map((item, index) => (
+            this.count && this.count.map((item, index) => (
+              <Table key={index} rowKey="id" dataSource={item.lineData} columns={columns[index]} />
+            ))
+          }
+        </div>
+        <div className="chart-lists">
+          {
+            this.count.length > 0 && checkedLists && checkedLists.map((item, index) => (
               <div key={index}>
                 <p style={{ fontSize: '2rem', fontWeight: 'bold' }}>{item}</p>
                 {
