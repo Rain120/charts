@@ -32,8 +32,12 @@ export default class SideMenu extends Component<SideMenuProps, any> {
       <Layout className="side-menu">
         <Sider trigger={null} collapsible={true} collapsed={collapsed}>
           <div className="logo">
+            <img src={require('src/common/images/logo.png')} />
             <a href="https://github.com/Rain120/charts" target="_blank">
-              <span className={classnames("title")}>Github: Rain120</span>
+              <span className={classnames("title")}><Icon type="github" /></span>
+            </a>
+            <a href="https://www.zhihu.com/people/yan-yang-nian-hua-120/activities" target="_blank">
+              <span className={classnames("title")}><Icon type="zhihu" /></span>
             </a>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={selectedKeys}>
@@ -52,7 +56,7 @@ export default class SideMenu extends Component<SideMenuProps, any> {
                     </SubMenu>
                   ) : (
                     <Menu.Item key={menu.key}>
-                      <Link to={menu.path}><Icon type={menu.icon} />{menu.text}</Link>
+                      <Link to={menu.path} style={{ overflow: 'hidden' }}><Icon type={menu.icon} />{menu.text}</Link>
                     </Menu.Item>
                   )
               ))

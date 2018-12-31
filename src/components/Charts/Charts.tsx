@@ -16,13 +16,17 @@ export default class Charts extends Component {
   count: any = [];
   public state = {
     checkedLists: ['LineCharts'] as any,
-    indeterminate: false,
+    indeterminate: true,
     checkAll: false,
     lineData: [] as any,
     names: [{
       name: '',
       dataKey: '',
     }] as any,
+  }
+
+  componentWillMount() {
+    this.info();
   }
 
   public lineDataFormat = JsonData => {
@@ -137,7 +141,8 @@ export default class Charts extends Component {
       title: 'User Notice',
       content: (
         <div>
-          <p>Please select the Chart you need Draw before using, and then upload your excel file</p>
+          <p>Please select the Chart you need Draw before using, and then upload your excel file。</p>
+          <p>Eg:<img src={require('src/common/images/eg.png')} /></p>
         </div>
       ),
       onOk() {},
@@ -198,7 +203,7 @@ export default class Charts extends Component {
         </div>
         <div>
           {
-            checkedLists && checkedLists.map((item, index) => (
+            this.count && checkedLists && checkedLists.map((item, index) => (
               <div key={index}>
                 <p style={{ fontSize: '2rem', fontWeight: 'bold' }}>{item}</p>
                 {
