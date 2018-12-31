@@ -3,7 +3,7 @@ import App from 'src/App';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import ChartsDemo from 'src/components/ChartsDemo/ChartsDemo';
-import Charts from 'src/components/Charts/Charts';
+import ChartsTabs from 'src/components/ChartsTabs/ChartsTabs';
 
 export default class Routes extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class Routes extends React.Component {
         <App>
           <Switch>
             <Route exact={true} path="/" component={ChartsDemo} />
-            <Route path="/charts/charts-drawer" component={Charts} />
+            <Route path="/charts/charts-drawer" component={ChartsTabs} />
           </Switch>
         </App>
       </Router>

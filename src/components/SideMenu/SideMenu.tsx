@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import moment from 'moment';
 import './index.scss';
 import { menus } from './menus';
 import { Layout, Menu, Icon } from 'antd';
 import Timer from 'src/components/Timer/Timer';
 
-const { Header, Sider, Content } = Layout;
+const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 interface SideMenuProps {
@@ -15,7 +16,8 @@ interface SideMenuProps {
 
 export default class SideMenu extends Component<SideMenuProps, any> {
   public state = {
-    collapsed: false
+    collapsed: false,
+    selectedKeys: [menus[0].key],
   };
 
   public toggle = () => {
@@ -24,17 +26,17 @@ export default class SideMenu extends Component<SideMenuProps, any> {
     });
   };
   render() {
-    const { collapsed } = this.state
+    const { collapsed, selectedKeys, } = this.state
 
     return (
       <Layout className="side-menu">
         <Sider trigger={null} collapsible={true} collapsed={collapsed}>
           <div className="logo">
-            <Link to="/">
-              <span className={classnames("title")}>Rainy</span>
-            </Link>
+            <a href="https://github.com/Rain120/charts" target="_blank">
+              <span className={classnames("title")}>Github: Rain120</span>
+            </a>
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[menus[0].key]}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={selectedKeys}>
             {
               menus && menus.map(menu => (
                 menu.children
@@ -66,9 +68,12 @@ export default class SideMenu extends Component<SideMenuProps, any> {
             />
             <Timer timerStyle="timer" />
           </Header>
-          <Content>
+          <Content style={{ margin: '1rem', padding: '1rem', background: '#fff', minHeight: '25rem', }}>
             {this.props.children}
           </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            ©{moment().format('YYYY')} Created by Rainy
+          </Footer>
         </Layout>
       </Layout>
     );
