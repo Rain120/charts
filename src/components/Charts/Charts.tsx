@@ -73,9 +73,11 @@ export default class Charts extends Component {
         var workbook = XLSX.read(data, {
             type: rABS ? 'binary' : 'array'
         });
-        var first_worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        var jsonArr = XLSX.utils.sheet_to_json(first_worksheet, {header: 1});
-        this.handleImpotedJson(jsonArr);
+        workbook.SheetNames.map(item => {
+          var worksheet = workbook.Sheets[item];
+          var jsonArr = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+          this.handleImpotedJson(jsonArr);
+        })
     };
     if (rABS) {
       reader.readAsBinaryString(f);
@@ -142,7 +144,11 @@ export default class Charts extends Component {
       content: (
         <div>
           <p>Please select the Chart you need Draw before using, and then upload your excel file。</p>
-          <p>Eg:<img src={require('src/common/images/eg.png')} /></p>
+          <p>
+            <p>Eg:</p>
+            <img style={{ width: '80%' }} src={require('src/common/images/eg.png')} />
+            <img style={{ width: '80%' }} src={require('src/common/images/eg2.png')} />
+          </p>
         </div>
       ),
       onOk() {},
