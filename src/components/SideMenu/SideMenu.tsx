@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 import moment from 'moment';
 import './index.scss';
 import { menus } from './menus';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Divider } from 'antd';
 import Timer from 'src/components/Timer/Timer';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -32,12 +31,8 @@ export default class SideMenu extends Component<SideMenuProps, any> {
       <Layout className="side-menu">
         <Sider trigger={null} collapsible={true} collapsed={collapsed}>
           <div className="logo">
-            <img src={require('src/common/images/logo.png')} />
-            <a href="https://github.com/Rain120/charts" target="_blank">
-              <span className={classnames("title")}><Icon type="github" /></span>
-            </a>
-            <a href="https://www.zhihu.com/people/yan-yang-nian-hua-120/activities" target="_blank">
-              <span className={classnames("title")}><Icon type="zhihu" /></span>
+            <a href="/">
+              <img src={require('src/common/images/logo.png')} />
             </a>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={selectedKeys}>
@@ -70,6 +65,16 @@ export default class SideMenu extends Component<SideMenuProps, any> {
               type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+            <span style={{ fontSize: '2rem' }}>
+
+              <a href="https://github.com/Rain120/charts" target="_blank">
+                <Icon type="github" /> Rain120
+              </a>
+              <Divider type="vertical" style={{ height: '3rem', border: '1px solid #ccc' }} />
+              <a href="https://www.zhihu.com/people/yan-yang-nian-hua-120/activities" target="_blank">
+                <Icon type="zhihu" />Rainy
+              </a>
+            </span>
             <Timer timerStyle="timer" />
           </Header>
           <Content style={{ margin: '1rem', padding: '1rem', background: '#fff', minHeight: '25rem', }}>
