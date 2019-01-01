@@ -31,7 +31,7 @@ export default class SideMenu extends Component<SideMenuProps, any> {
       <Layout className="side-menu">
         <Sider trigger={null} collapsible={true} collapsed={collapsed}>
           <div className="logo">
-            <a href="/">
+            <a href="/charts/">
               <img src={require('src/common/images/logo.png')} />
             </a>
           </div>

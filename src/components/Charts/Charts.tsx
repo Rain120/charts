@@ -141,13 +141,14 @@ export default class Charts extends Component {
   public info = () => {
     Modal.info({
       title: 'User Notice',
+      width: '70%',
       content: (
         <div>
-          <p>Please select the Chart you need Draw before using, and then upload your excel file。</p>
+          <p>Please select the Chart you need Draw before using, and then upload your excel file.</p>
           <p>
             <p>Eg:</p>
-            <img style={{ width: '80%' }} src={require('src/common/images/eg.png')} />
-            <img style={{ width: '80%' }} src={require('src/common/images/eg2.png')} />
+            <img style={{ width: '45%', margin: '0 2%' }} src={require('src/common/images/eg.png')} />
+            <img style={{ width: '50%' }} src={require('src/common/images/eg2.png')} />
           </p>
         </div>
       ),
